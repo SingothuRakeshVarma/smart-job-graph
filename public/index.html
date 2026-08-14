@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Smart Job Graph — a graph database job recommendation demo.">
+  <title>Smart Job Graph</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">SG</span><div><strong>Smart Job Graph</strong><small>Graph-powered talent discovery</small></div></div>
+    <div class="status" id="dbStatus"><span class="dot"></span> Checking database…</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Wexa AI • Take-home assignment</span>
+        <h1>Explore jobs through <span>relationships.</span></h1>
+        <p>Discover roles, skills, companies and similar developers through a graph rather than isolated rows.</p>
+      </div>
+      <div class="hero-search">
+        <label for="userSearch">Choose a developer</label>
+        <div class="search-row"><input id="userSearch" list="userOptions" placeholder="Search by name or title…"><datalist id="userOptions"></datalist><button id="searchBtn">Explore</button></div>
+      </div>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="dashboard-grid">
+      <article class="panel profile-panel">
+        <div class="panel-head"><div><span class="section-kicker">Selected developer</span><h2 id="profileName">Select a developer</h2></div><span class="pill" id="profileLocation">—</span></div>
+        <p class="muted" id="profileTitle">Search above to load a graph profile.</p>
+        <div class="skill-list" id="skillList"></div>
+        <div class="mini-meta"><span>Experience <strong id="profileExperience">—</strong></span><span>Skills <strong id="profileSkillCount">0</strong></span></div>
+      </article>
+
+      <article class="panel graph-panel">
+        <div class="panel-head"><div><span class="section-kicker">Relationship map</span><h2>Graph connections</h2></div><span class="pill">2+ hop traversal</span></div>
+        <div class="graph-canvas" id="graphCanvas"><div class="graph-empty">Select a developer to visualize their relationships.</div></div>
+        <div class="legend"><span><i class="legend-user"></i>User</span><span><i class="legend-skill"></i>Skill</span><span><i class="legend-job"></i>Job</span><span><i class="legend-company"></i>Company</span></div>
+      </article>
+    </section>
+
+    <section class="panel recommendations">
+      <div class="panel-head"><div><span class="section-kicker">Graph recommendation</span><h2>Recommended jobs</h2></div><span class="muted" id="recommendationNote">Based on shared skills</span></div>
+      <div class="job-grid" id="jobGrid"><div class="empty-state">Select a developer to generate recommendations.</div></div>
+    </section>
+
+    <section class="two-col">
+      <article class="panel"><div class="panel-head"><div><span class="section-kicker">Network similarity</span><h2>Similar developers</h2></div></div><div class="people-list" id="similarList"><div class="empty-state">No developer selected.</div></div></article>
+      <article class="panel"><div class="panel-head"><div><span class="section-kicker">Relational-style query</span><h2>Browse jobs</h2></div></div><div class="search-row browse"><input id="jobSearch" placeholder="Search jobs or locations…"><button id="jobSearchBtn">Search</button></div><div class="job-list" id="browseJobs"></div></article>
+    </section>
+
+    <section class="explain">
+      <div><span class="section-kicker">Why graph?</span><h2>Connections are the product.</h2></div>
+      <p>A job recommendation is not just a row lookup. The useful path is <strong>User → Skill → Job → Company</strong>. The same graph can also reveal developers sharing skills and networks without manually joining many tables.</p>
+    </section>
+  </main>
+
+  <footer>Smart Job Graph • Node.js + Express + Neo4j JavaScript Driver + CongoDB-compatible graph database</footer>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

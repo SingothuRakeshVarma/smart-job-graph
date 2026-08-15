@@ -174,7 +174,11 @@ app.get('/{*splat}', (req, res) => res.sendFile(path.join(__dirname, '..', 'publ
 
 const PORT = process.env.PORT || 10000;
 
-app.listen(PORT, () => {
+app.get("/", (req, res) => {
+    res.send("Smart Job Graph API is running");
+});
+
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
 process.on('SIGINT', async () => {

@@ -172,8 +172,10 @@ app.get('/api/search', async (req, res) => {
 
 app.get('/{*splat}', (req, res) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')));
 
-const server = app.listen(PORT, () => {
-  console.log(`Smart Job Graph running at http://localhost:${PORT}`);
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Smart Job Graph running on port ${PORT}`);
 });
 
 process.on('SIGINT', async () => {

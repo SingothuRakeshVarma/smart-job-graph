@@ -174,10 +174,9 @@ app.get('/{*splat}', (req, res) => res.sendFile(path.join(__dirname, '..', 'publ
 
 const PORT = process.env.PORT || 10000;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Smart Job Graph running on port ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
-
 process.on('SIGINT', async () => {
   server.close();
   await closeDriver();
